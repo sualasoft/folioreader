@@ -17,11 +17,12 @@ import java.io.File
 class FontAdapter(
     private val config: Config,
     context: Context,
-    private val userFonts: Map<String, File> = FontFinder.getUserFonts(),
-    private val systemFonts: Map<String, File> = FontFinder.getSystemFonts(),
+//    private val userFonts: Map<String, File> = FontFinder.getUserFonts(),
+    private val assetFonts: Map<String, File> = FontFinder.getAssetFonts(context),
+//    private val systemFonts: Map<String, File> = FontFinder.getSystemFonts(),
     val fontKeyList: List<String> =
-        ArrayList<String>(userFonts.keys.toTypedArray().sorted()) +
-                ArrayList<String>(systemFonts.keys.toTypedArray().sorted())
+        ArrayList<String>(assetFonts.keys.toTypedArray().sorted())/* +
+                ArrayList<String>(systemFonts.keys.toTypedArray().sorted())*/
 ) : ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, fontKeyList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -61,11 +62,11 @@ class FontAdapter(
 
         view.text = fontKey
 
-        if (userFonts.containsKey(fontKey)) {
-            view.typeface = Typeface.createFromFile(userFonts[fontKey])
-        } else if (systemFonts.containsKey(fontKey)) {
+        if (assetFonts.containsKey(fontKey)) {
+            view.typeface = Typeface.createFromFile(assetFonts[fontKey])
+        } /*else if (systemFonts.containsKey(fontKey)) {
             view.typeface = Typeface.createFromFile(systemFonts[fontKey])
-        }
+        }*/
 
         return view
     }

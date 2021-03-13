@@ -1,6 +1,7 @@
 package com.folioreader.ui.base;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.folioreader.Config;
 import com.folioreader.R;
@@ -62,11 +63,12 @@ public final class HtmlUtil {
         String fontName = config.getFont();
 
         System.out.println("Font family: " + fontName);
+        Log.i("HTMLUTIL", "Font family: " + fontName);
 
         // Inject CSS & user font style
         String toInject = "\n" + cssPath + "\n" + jsPath + "\n";
 
-        File userFontFile = FontFinder.getFontFile(fontName);
+        File userFontFile = FontFinder.getFontFile(fontName, context);
         if (userFontFile != null) {
             System.out.println("Injected user font into CSS");
             System.out.println("  - path: " + userFontFile.getAbsolutePath());

@@ -106,13 +106,15 @@ object FontFinder {
     }
 
     @JvmStatic
-    fun getFontFile(key: String): File? {
+    fun getFontFile(key: String, context: Context): File? {
         val system = getSystemFonts()
         val user = getUserFonts()
+        val asset = getAssetFonts(context)
 
         return when {
             system.containsKey(key) -> system[key]
             user.containsKey(key) -> user[key]
+            asset.containsKey(key) -> asset[key]
             else -> null
         }
     }

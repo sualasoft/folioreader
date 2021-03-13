@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity
 
                 folioReader.setReadLocator(readLocator);
                 folioReader.setConfig(config, true)
-                        .openBook("file:///android_asset/nko.epub");
+                        .openBook("file:///android_asset/TheSilverChair.epub");
             }
         });
     }

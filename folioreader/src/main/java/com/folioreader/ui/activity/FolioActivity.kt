@@ -253,11 +253,7 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
 
         // Need to add when vector drawables support library is used.
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        val config = AppUtil.getSavedConfig(this)!!
-        Log.i(LOG_TAG, "-> folioactivityISRTL -> " + config.isRtl)
-        if (config.isRtl) {
-            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
-        }
+
         handler = Handler()
         val display = windowManager.defaultDisplay
         displayMetrics = resources.displayMetrics
@@ -309,6 +305,11 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
             )
         } else {
             setupBook()
+        }
+        val config = AppUtil.getSavedConfig(this)!!
+        Log.i(LOG_TAG, "-> folioactivityISRTL -> " + config.isRtl)
+        if (config.isRtl) {
+            window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
         }
     }
 

@@ -3,6 +3,7 @@ package com.folioreader.ui.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,7 +63,9 @@ class FontAdapter(
 
         view.text = fontKey
 
+        Log.i("FontAdapter", "FontKey -> $fontKey")
         if (assetFonts.containsKey(fontKey)) {
+            Log.i("FontAdapter", "FontKeyFont -> ${assetFonts[fontKey]}")
             view.typeface = Typeface.createFromFile(assetFonts[fontKey])
         } /*else if (systemFonts.containsKey(fontKey)) {
             view.typeface = Typeface.createFromFile(systemFonts[fontKey])

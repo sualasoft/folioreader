@@ -207,6 +207,7 @@ class ConfigBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     position: Int,
                     id: Long
                 ) {
+                    Log.i("FontAdapter", "SelectedFont -> ${adapter.fontKeyList[position]}")
                     selectFont(adapter.fontKeyList[position], true)
                 }
 
